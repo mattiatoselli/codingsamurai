@@ -10,14 +10,14 @@
     {% if page == paginator.page %}
       <span class="ml-1 mr-1">{{ page }}</span>
     {% elsif page == 1 %}
-      <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: 'https://mattiatoselli.github.io/codingsamurai' | replace: '//', '/' }}">{{ page }}</a>
+      <a class="ml-1 mr-1" href="{{ paginator.previous_page_path | prepend: 'codingsamurai' | replace: '//', '/' }}">{{ page }}</a>
     {% else %}
-      <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: 'https://mattiatoselli.github.io/codingsamurai' | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      <a class="ml-1 mr-1" href="{{ site.paginate_path | prepend: 'codingsamurai' | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
     {% endif %}
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: 'https://mattiatoselli.github.io/codingsamurai' | replace: '//', '/' }}">Next &raquo;</a>
+    <a class="ml-1 mr-1" href="{{ paginator.next_page_path | prepend: 'codingsamurai' | replace: '//', '/' }}">Next &raquo;</a>
   {% else %}
     <span>Next &raquo;</span>
   {% endif %}
