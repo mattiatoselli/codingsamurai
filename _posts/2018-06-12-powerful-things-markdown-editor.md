@@ -89,7 +89,7 @@ printf("Hello World");
 
 
 
-![walking]({{ site.baseurl }}/assets/images/8.jpg)
+![walking](https://mattiatoselli.github.io/codingsamurai/assets/images/8.jpg)
 
 ## Reference lists
 
