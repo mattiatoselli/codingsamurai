@@ -1,2 +1,4 @@
 var path = window.location.href
-alert(path);
+if(path.includes("codingsamurai/codingsamurai")){
+    window.location.href = path.replace("codingsamurai/codingsamurai", "codingsamurai")
+}
