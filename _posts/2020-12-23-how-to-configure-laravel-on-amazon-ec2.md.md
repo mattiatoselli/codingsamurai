@@ -50,8 +50,6 @@ Ricordiamoci di generare una chiave SSH per l'accesso alla istanza, in alternati
 
 Apriamo un terminale Linux sul nostro PC e forniamo i giusti permessi alla chiave per la connessione ssh.
 
-#### BASH
-
 ```bash
 sudo chmod 400 laravel-coding-samurai.pem
 
