@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to configure Laravel using Amazon EC2 and RDS"
+title:  "Creare una applicazione Laravel su AWS con Amazon EC2"
 author: mattia
 categories: [ AWS, tutorial, EC2, Laravel ]
 image: assets/images/16.jpg
