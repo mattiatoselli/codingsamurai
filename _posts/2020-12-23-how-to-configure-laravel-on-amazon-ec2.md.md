@@ -36,6 +36,12 @@ Laravel è un framework PHP per la creazione di qualsiasi cosa, dalle applicazio
 Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le più popolari sono Nginx e Apache. In questo caso useremo Nginx.
 
 
+## Creazione della EC2
+
+Accediamo alla console del nostro account AWS e dopo esserci posizionati nela region di nostra scelta, selezioniamo il servizio EC2. Per prima cosa dobbiamo scegliere la AMI, nel nostro caso selezioniamo Ubuntu Server 20.04 LTS (HVM). Tale AMI è disponibile per il free tier e quindi fa esattamente al caso nostro. Come tipologia sceglieremo la t2.micro.
+
+Creiamo una VPC ed una sottorete per il nostro server Laravel, le impostazioni predefinite sono più che sufficienti. Proseguiamo poi con l'assegnare un gruppo di sicurezza, lo storage e le altre definizioni dell'hardware. Per il gruppo di sicurezza ricordiamoci di assegnare le regole di accesso per il traffico SSH, HTTP ed HTTPS e di configurare l'accesso dagli indirizzi IP che riteniamo opportuni.
+
 ```
 
 #### HTML
