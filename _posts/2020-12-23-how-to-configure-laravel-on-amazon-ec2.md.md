@@ -67,16 +67,16 @@ sudo apt-get update
 sudo apt-get install nginx
 ```
 
+Installiamo PHP.
+
 ```
 
 #### HTML
-
-```html
-<li class="ml-1 mr-1">
-    <a target="_blank" href="#">
-    <i class="fab fa-twitter"></i>
-    </a>
-</li>
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install php8.0 php8.0-xml php8.0-gd php8.0-opcache php 8.0-mbstring
 ```
 
 #### CSS
