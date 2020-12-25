@@ -33,6 +33,7 @@ Laravel è un framework PHP per la creazione di qualsiasi cosa, dalle applicazio
 
 
 ## Stack
+
 Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le più popolari sono Nginx e Apache. In questo caso useremo Nginx.
 
 
@@ -44,6 +45,24 @@ Nel terzo passo possiamo lasciare tutto secondo impostazioni standard, verrà cr
 
 Ricordiamoci di generare una chiave SSH per l'accesso alla istanza, in alternativa potremo già usare una di quelle che già abbiamo, se per qualche motivo su AWS ne abbiamo generata una. La chiave di accesso non deve essere persa, una volta generata non sarà possibile per alcun motivo generarne un'altra. Lanciamo l'istanza e attendiamo che parta.
 
+
+## Installazione dei software
+
+Apriamo un terminale Linux sul nostro PC e forniamo i giusti permessi alla chiave per la connessione ssh.
+
+#### BASH
+
+```bash
+sudo chmod 400 laravel-coding-samurai.pem
+
+```
+
+Accediamo alla nostra istanza. Il nome dell'utente di default per le istanze Ubuntu è "ubuntu", l'indirizzo IP della macchina è disponibile nella visuale di dettaglio della stessa l'indirizzo ip nell'esempio seguente è completamente inventato.
+
+```bash
+ssh ubuntu@86.232.212.99 -i laravel-coding-samurai.pem
+
+```
 
 
 ```
