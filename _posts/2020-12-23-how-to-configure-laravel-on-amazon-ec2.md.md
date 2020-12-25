@@ -7,9 +7,22 @@ image: assets/images/laravel-aws.png
 featured: true
 rating: 4.5
 ---
-There are lots of powerful things you can do with the Markdown editor. If you've gotten pretty comfortable with writing in Markdown, then you may enjoy some more advanced tips about the types of things you can do with Markdown!
+In questo articolo partiremo da alcuni presupposti. Per poterlo completare, avremo bisogno di creare un account su AWS e collegargli una carta di credito valida. Si tratta di un passaggio necessario per poter accedere ai servizi offerti, non verranno effettuati addebiti di alcun tipo, tutto ciò che faremo è disponibile all'interno del tier gratuito offerto da AWS.
 
-As with the last post about the editor, you'll want to be actually editing this post as you read it so that you can see all the Markdown code we're using.
+
+## Amazon EC2
+
+Amazon EC2 è un servizio di cloud computing che permette di eseguire server virtuali per far girare applicazioni e servizi web come in un tradizionale data center.
+
+A differenza di quest’ultimo però, offre il vantaggio di poter effettuare il provisioning di server e risorse immediatamente in base alle proprie esigenze. Questo servizio introduce una serie di concetti che vanno approfonditi per comprenderne il funzionamento complessivo, in primo luogo istanze ed AMI. 
+
+AMI sta per Amazon Machine Image, e si tratta di template che contengono il software necessario per dare vita ad un server virtuale. Nello specifico, ogni template contiene:
+
+- Sistema operativo.
+- Application server.
+- Software aggiuntivi.
+
+Le istanze EC2 sono copie di una AMI eseguite su una determinata configurazione hardware. In altre parole, l’istanza è il vero e proprio ambiente virtuale fatto di CPU, memoria, storage e banda internet che esegue il nostro pacchetto software, ovvero la nostra AMI.
 
 
 ## Special formatting
