@@ -34,7 +34,7 @@ Laravel è un framework PHP per la creazione di qualsiasi cosa, dalle applicazio
 
 ## Stack
 
-Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le più popolari sono Nginx e Apache. In questo caso useremo Nginx.
+Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le più popolari sono Nginx e Apache. In questo caso useremo Apache.
 
 
 ## Creazione della EC2
