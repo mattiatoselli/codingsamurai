@@ -70,13 +70,17 @@ sudo apt-get install nginx
 Installiamo PHP.
 
 ```
-
-#### HTML
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 sudo apt-get install php8.0 php8.0-xml php8.0-gd php8.0-opcache php 8.0-mbstring
+```
+
+Rimuoviamo Apache Server.
+
+```
+sudo apt-get purge apache2 apache2-utils apache2-bin apache2.2-common
 ```
 
 #### CSS
