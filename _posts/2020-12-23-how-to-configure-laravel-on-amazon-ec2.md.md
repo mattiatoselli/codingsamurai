@@ -25,23 +25,17 @@ AMI sta per Amazon Machine Image, e si tratta di template che contengono il soft
 Le istanze EC2 sono copie di una AMI eseguite su una determinata configurazione hardware. In altre parole, l’istanza è il vero e proprio ambiente virtuale fatto di CPU, memoria, storage e banda internet che esegue il nostro pacchetto software, ovvero la nostra AMI.
 
 
-## Special formatting
+## Laravel
 
-As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:
+Laravel è un framework PHP per la creazione di qualsiasi cosa, dalle applicazioni di piccole dimensioni a quelle di enterprise. Laravel è stato creato da Taylor Otwell nel giugno 2011 con l'obiettivo di avere una sintassi del codice semplice ed espressiva, che offre il vantaggio di avere un'applicazione Web che è facile da usare e codice gestibile.
 
-+ ~~strike through~~
-+ ==highlight==
-+ \*escaped characters\*
+È interessante notare che Laravel è stato visto migliorare di anno in anno. Ogni anno vengono implementate nuove funzionalità oltre alla correzione dei bug, tutto grazie alla sua disponibilità come framework PHP open source e alla comunità degli sviluppatori su GitHub.
 
 
-## Writing code blocks
+## Stack
+Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le più popolari sono Nginx e Apache. In questo caso useremo Nginx.
 
-There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, `like this`. Larger snippets of code can be displayed across multiple lines using triple back ticks:
 
-```
-.my-link {
-    text-decoration: underline;
-}
 ```
 
 #### HTML
