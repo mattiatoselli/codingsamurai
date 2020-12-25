@@ -39,7 +39,7 @@ Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le
 
 ## Creazione della EC2
 
-Accediamo alla console del nostro account AWS e dopo esserci posizionati nela region di nostra scelta, selezioniamo il servizio EC2. Per prima cosa dobbiamo scegliere la AMI, nel nostro caso selezioniamo Ubuntu Server 20.04 LTS (HVM). Tale AMI è disponibile per il free tier e quindi fa esattamente al caso nostro. Come tipologia sceglieremo la t2.micro.
+Accediamo alla console del nostro account AWS e dopo esserci posizionati nela region di nostra scelta, selezioniamo il servizio EC2. Per prima cosa dobbiamo scegliere la AMI, nel nostro caso selezioniamo Amazon Linux 2 LTS. Tale AMI è disponibile per il free tier e quindi fa esattamente al caso nostro. Come tipologia sceglieremo la t2.micro.
 
 Nel terzo passo possiamo lasciare tutto secondo impostazioni standard, verrà creata una VPC pubblica di default. Negli step successivi assegnamo lo storage di default e i tag che riteniamo opportuni. Infinev assegnamo un gruppo di sicurezza con i permessi di accesso per i protocolli SSH, HTTP ed HTTPS. 
 
@@ -54,10 +54,10 @@ Apriamo un terminale Linux sul nostro PC e forniamo i giusti permessi alla chiav
 sudo chmod 400 laravel-coding-samurai.pem
 ```
 
-Accediamo alla nostra istanza. Il nome dell'utente di default per le istanze Ubuntu è "ubuntu", l'indirizzo IP della macchina è disponibile nella visuale di dettaglio della stessa l'indirizzo ip nell'esempio seguente è completamente inventato.
+Accediamo alla nostra istanza. Il nome dell'utente di default per le istanze Amazon Linux è "ec2-user" (nel caso di Ubuntu è "ubuntu" per esempio), l'indirizzo IP della macchina è disponibile nella visuale di dettaglio della stessa l'indirizzo ip nell'esempio seguente è completamente inventato.
 
 ```bash
-ssh ubuntu@86.232.212.99 -i laravel-coding-samurai.pem
+ssh ec2-user@86.232.212.99 -i laravel-coding-samurai.pem
 ```
 
 Aggiorniamo i pacchetti e installiamo NGINX
