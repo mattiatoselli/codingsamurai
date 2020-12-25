@@ -40,7 +40,11 @@ Ci sono alcune possibilità quando si sceglie un server web per PHP in Linux. Le
 
 Accediamo alla console del nostro account AWS e dopo esserci posizionati nela region di nostra scelta, selezioniamo il servizio EC2. Per prima cosa dobbiamo scegliere la AMI, nel nostro caso selezioniamo Ubuntu Server 20.04 LTS (HVM). Tale AMI è disponibile per il free tier e quindi fa esattamente al caso nostro. Come tipologia sceglieremo la t2.micro.
 
-Creiamo una VPC ed una sottorete per il nostro server Laravel, le impostazioni predefinite sono più che sufficienti. Proseguiamo poi con l'assegnare un gruppo di sicurezza, lo storage e le altre definizioni dell'hardware. Per il gruppo di sicurezza ricordiamoci di assegnare le regole di accesso per il traffico SSH, HTTP ed HTTPS e di configurare l'accesso dagli indirizzi IP che riteniamo opportuni.
+Nel terzo passo possiamo lasciare tutto secondo impostazioni standard, verrà creata una VPC pubblica di default. Negli step successivi assegnamo lo storage di default e i tag che riteniamo opportuni. Infinev assegnamo un gruppo di sicurezza con i permessi di accesso per i protocolli SSH, HTTP ed HTTPS. 
+
+Ricordiamoci di generare una chiave SSH per l'accesso alla istanza, in alternativa potremo già usare una di quelle che già abbiamo, se per qualche motivo su AWS ne abbiamo generata una. La chiave di accesso non deve essere persa, una volta generata non sarà possibile per alcun motivo generarne un'altra. Lanciamo l'istanza e attendiamo che parta.
+
+
 
 ```
 
