@@ -52,16 +52,20 @@ Apriamo un terminale Linux sul nostro PC e forniamo i giusti permessi alla chiav
 
 ```bash
 sudo chmod 400 laravel-coding-samurai.pem
-
 ```
 
 Accediamo alla nostra istanza. Il nome dell'utente di default per le istanze Ubuntu è "ubuntu", l'indirizzo IP della macchina è disponibile nella visuale di dettaglio della stessa l'indirizzo ip nell'esempio seguente è completamente inventato.
 
 ```bash
 ssh ubuntu@86.232.212.99 -i laravel-coding-samurai.pem
-
 ```
 
+Aggiorniamo i pacchetti e installiamo NGINX
+
+```bash
+sudo apt-get update
+sudo apt-get install nginx
+```
 
 ```
 
