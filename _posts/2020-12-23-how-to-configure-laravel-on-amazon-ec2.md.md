@@ -177,40 +177,24 @@ MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-Dobbiamo anche creare il nostro database locale sqlite.
+Dobbiamo anche creare il nostro database locale sqlite, riavviare Apache e installare Composer e le dipendenze di Laravel. Dobbiamo anche accordare i permessi nella cartella storage e nella cartella del DB.
 
 ```
 cd /var/www/html/laravel/database
 touch database.sqlite
+service httpd restart
+cd /var/www/html/laravel
+yum install wget -y
+wget https://getcomposer.org/composer.phar
+php composer.phar
+php composer.phar install
+sudo chmod -R 775 database
+sudo chmod -R 755 storage
 ```
 
-#### Ruby
+infine, generiamo la chiave dela app e migriamo il database.
 
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
 ```
-
-#### C
-
-```c
-printf("Hello World");
+php artisan generate:key
+php artisan migrate
 ```
-
-
-
-
-![walking](https://mattiatoselli.github.io/codingsamurai/assets/images/8.jpg)
-
-## Reference lists
-
-The quick brown jumped over the lazy.
-
-Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.
-
-## Full HTML
-
-Perhaps the best part of Markdown is that you're never limited to just Markdown. You can write HTML directly in the Markdown editor and it will just work as HTML usually does. No limits! Here's a standard YouTube embed code as an example:
-
-<p><iframe style="width:100%;" height="315" src="https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
