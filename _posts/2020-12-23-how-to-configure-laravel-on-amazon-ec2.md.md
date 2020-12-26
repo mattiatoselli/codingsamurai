@@ -60,60 +60,67 @@ Accediamo alla nostra istanza. Il nome dell'utente di default per le istanze Ama
 ssh ec2-user@86.232.212.99 -i laravel-coding-samurai.pem
 ```
 
-Aggiorniamo i pacchetti e installiamo NGINX
+Aggiorniamo i pacchetti e installiamo Apache, poi lo avviamo.
 
 ```bash
-sudo apt-get update
-sudo apt-get install nginx
+sudo yum update -y
+sudo yum install -y httpd httpd-tools mod_ssl
+sudo systemctl enable httpd 
+sudo systemctl start httpd 
 ```
 
-Installiamo PHP.
+Se visitiamo ora l'indirizzo IP della macchina dovremmo vedere la pagina di benvenuto di Apache. Attiviamo i pacchetti extras di Amazon Linux.
 
-```
-sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install php8.0 php8.0-xml php8.0-gd php8.0-opcache php 8.0-mbstring
+```bash
+sudo yum install amazon-linux-extras -y
 ```
 
-Rimuoviamo Apache Server.
+Controlliamo quali siano le versioni di PHP disponibili e installiamo l'ultima stabile disponibile, successivamente i pacchetti richiesti.
 
 ```
-sudo apt-get purge apache2 apache2-utils apache2-bin apache2.2-common
+sudo amazon-linux-extras | grep php
+sudo amazon-linux-extras enable php7.4 
+sudo yum clean metadata 
+sudo yum install php php-common php-pear 
+sudo yum install php-{cgi,curl,mbstring,gd,mysqlnd,gettext,json,xml,fpm,intl,zip}
 ```
 
-#### CSS
+## Creazione del progetto Laravel e configurazione di Apache
 
-```css
-.highlight .c {
-    color: #999988;
-    font-style: italic; 
-}
-.highlight .err {
-    color: #a61717;
-    background-color: #e3d2d2; 
-}
+A questo punto avremo bisogno di Git, Composer e successivamente di Laravel per poter partire col nostro progetto, avremo anche bisogno di aprire il file di configurazione di Apache con Nano.
+
+```
+yum install git -y
+cd /var/www/html
+git clone https://github.com/laravel/laravel.git
+nano /etc/httpd/conf/httpd.conf
 ```
 
-#### JS
+Alla fine del file copiamo questa configurazione.
 
-```js
-// alertbar later
-$(document).scroll(function () {
-    var y = $(this).scrollTop();
-    if (y > 280) {
-        $('.alertbar').fadeIn();
-    } else {
-        $('.alertbar').fadeOut();
-    }
-});
+```
+Alias / /var/www/html/laravel/public/
+<Directory "/var/www/html/laravel/public">
+        AllowOverride All
+        Order allow,deny
+        allow from all
+</Directory>
 ```
 
-#### Python
+Modifichiamo il file .htaccess.
 
-```python
-print("Hello World")
+```
+nano /var/www/html/laravel/public/.htaccess
+```
+
+Aggiungiamo la direttiva "RewriteBase /" sotto "RewriteEngine On".
+
+copiamo il file di esempio delle configurazioni di ambiente, ed editiamolo:
+
+```
+cd /var/www/html/laravel
+mv .env.example .env
+nano .env
 ```
 
 #### Ruby
