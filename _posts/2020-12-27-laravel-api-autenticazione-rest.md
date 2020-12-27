@@ -1,11 +1,9 @@
 ---
 layout: post
-title:  "Let's test spoilers"
+title:  "Scrivere un modulo di autenticazione API REST per Laravel"
 author: mattia
-categories: [ Jekyll, tutorial ]
-image: assets/images/12.jpg
-featured: true
-hidden: true
+categories: [ Laravel, Api, Rest, Php, Docker]
+image: assets/images/laravel-api.png
 ---
 
 Director Roland Suso Richter's enigmatic psychological thriller (direct to video/DVD) was based upon screenwriter Michael Cooney's own play "Point of Death" - a title that gave away the film's entire plot twist premise.
