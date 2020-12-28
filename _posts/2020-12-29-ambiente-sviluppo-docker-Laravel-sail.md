@@ -10,8 +10,8 @@ featured: true
 rating: 3.5
 ---
 
-Review products, books, movies, restaurant and anything you like on your Jekyll blog with Mediumish! JSON-LD ready for review property.
+In questo articolo vedremo come scaricare e configurare Docker e Docker-compose sul proprio PC Linux, per poi avere rapidamente un server locale per lo sviluppo delle nostre aplicazioni Laravel.
 
-#### How to use?
+## Docker
 
-
+Docker + un gestore di container Linux. Un container è un modo per impacchettare una applicazione, insieme a tutte le dipendenze e pacchetti necessari al suo funzionamento, e le sue configurazioni. Si tratta di artifacts che possono essere facilmente condivisi e portabili, ciò rende i processi di sviluppo e deployment più rapidi e facili.
