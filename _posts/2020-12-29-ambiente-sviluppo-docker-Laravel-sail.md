@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Creare rapidamente un ambiente di sviluppo con Docker e Laravel Sail"
-author: john
+author: mattia
 categories: [ Docker, Laravel ]
 tags: [ Docker, Laravel ]
 image: assets/images/laravel-sail.jpg
