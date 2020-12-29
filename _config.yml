@@ -16,10 +16,11 @@ authors:
   mattia:
     name: Mattia
     display_name: Mattia
-    gravatar: e56154546cf4be74e393c62d1ae9f9d4
-    email: wowthemesnet@gmail.com
-    web: https://www.wowthemes.net
-    twitter: https://twitter.com/wowthemesnet
+    avatar: 'assets/images/avatar.png'
+    #gravatar: e56154546cf4be74e393c62d1ae9f9d4
+    email: toselli.mattia@gmail.com
+    #web: https://www.wowthemes.net
+    #twitter: https://twitter.com/wowthemesnet
     description: "Author of Coding Samurai, works for HCT Italia and Fluentify as full stack developer."
   john:
     name: John
