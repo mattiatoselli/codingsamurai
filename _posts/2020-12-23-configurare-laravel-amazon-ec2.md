@@ -5,6 +5,7 @@ author: mattia
 categories: [ AWS, tutorial, EC2, Laravel ]
 image: assets/images/laravel-aws.png
 featured: true
+comments: false
 rating: 4.5
 ---
 In questo articolo partiremo da alcuni presupposti. Per poterlo completare, avremo bisogno di creare un account su AWS e collegargli una carta di credito valida. Si tratta di un passaggio necessario per poter accedere ai servizi offerti, non verranno effettuati addebiti di alcun tipo, tutto ciò che faremo è disponibile all'interno del tier gratuito offerto da AWS.
