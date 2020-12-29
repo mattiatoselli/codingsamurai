@@ -27,7 +27,3 @@ comments: true
       <p>Thank you for your support! If you wish to talk with me let's get in contact. If you think you could be interested in knowing something else about my current business, please refer to the light blue button below.
 
       <a target="_blank" href="mailto:toselli.mattia@gmail.com" class="btn btn-danger">Email me</a> <a target="_blank" href="https://www.hctitalia.it" class="btn btn-info">HCT Italia</a>
-
-    </div>
-  </div>
-</div>
