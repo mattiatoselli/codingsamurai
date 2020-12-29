@@ -7,6 +7,7 @@ tags: [ Docker, Laravel ]
 image: assets/images/laravel-sail.jpg
 description: "Un breve articolo su come creare un ambiente di sviluppo Laravel in locale."
 featured: true
+comments: false
 rating: 3.5
 ---
 
