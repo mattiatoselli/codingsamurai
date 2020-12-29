@@ -64,6 +64,4 @@ A questo punto se apriamo un altro terminale, possiamo utilizzare i comandi prop
 ./sail artisan migrate
 ```
 
-Se l'ultimo comando dovesse falire, dobbiamo connetterci alla porta 3306 del nostro PC con un qualunque client SQL (esempio Adminer o MySql Workbench) e creare il database. Il nome del database è visibile nel file .env "DB_DATABASE=example_app", le credenziali di accesso col client sono invece DB_USERNAME=root B_PASSWORD= (generalmete quest'ultima è vuota).
-
-Abbiamo creato un ambiente di sviluppo completo su Laravel.
+Se l'ultimo comando dovesse falire, dobbiamo connetterci alla porta 3306 del nostro PC con un qualunque client SQL (esempio Adminer o MySql Workbench) e creare il database. Il nome del database è visibile nel file .env "DB_DATABASE=example_app", le credenziali di accesso col client sono invece DB_USERNAME=root B_PASSWORD= (generalmente quest'ultima è vuota).
