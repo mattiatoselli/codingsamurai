@@ -45,9 +45,25 @@ $ sudo apt-get install docker-compose
 Per creare una nuova applicazione Laravel in una directory denominata "timesheet-app", eseguire i seguenti comando nel terminale:
 
 ```
-curl -s https://laravel.build/timesheet-app | bash
-cd timesheet-app/vendor/bin/
+curl -s https://laravel.build/example-app
+cd example-app/vendor/bin
 ./sail up
 ```
 
 Quando finalmente il terminale ci dirà <i>"PHP 8.0.0 Development Server (http://0.0.0.0:80) started"</i>, potremo visitare la pagina di root del nostro progetto Laravel, disponibile presso http://localhost.
+
+A questo punto se apriamo un altro terminale, possiamo utilizzare i comandi propri di Docker per interagire con i container o con l'ambiente Laravel. Per esempio:
+```
+//spegni i container
+./sail down
+//avvia container in detached mode
+./sail up -d
+//crea chiave di crittazione
+./sail artisan key:generate
+//effettua migrazione database
+./sail artisan migrate
+```
+
+Se l'ultimo comando dovesse falire, dobbiamo connetterci alla porta 3306 del nostro PC con un qualunque client SQL (esempio Adminer o MySql Workbench) e creare il database. Il nome del database è visibile nel file .env "DB_DATABASE=example_app", le credenziali di accesso col client sono invece DB_USERNAME=root B_PASSWORD= (generalmete quest'ultima è vuota).
+
+Abbiamo creato un ambiente di sviluppo completo su Laravel.
