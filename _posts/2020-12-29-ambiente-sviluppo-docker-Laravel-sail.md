@@ -12,6 +12,7 @@ rating: 3.5
 
 In questo articolo vedremo come scaricare e configurare Docker e Docker-compose sul proprio PC Linux, per poi avere rapidamente un server locale per lo sviluppo delle nostre aplicazioni Laravel.
 
+
 ## Installazione di Docker su Linux
 
 Laravel dalla versione 8 fa uso dei container, per questo dovremo dotarci di Docker. Nel caso di Linux, occorre fare riferimento alle diverse versioni ed architetture supportate, ogni versione ha una serie di accorgimenti che differiscono dalle altre, Da <a href="https://docs.docker.com/engine/install/">questo articolo</a>, seguire il percorso relativo alla propria versione.
@@ -40,6 +41,7 @@ $ sudo usermod -aG docker $USER
 $ sudo apt-get install docker-compose
 ```
 
+
 ## Installazione di Laravel
 
 Per creare una nuova applicazione Laravel in una directory denominata "timesheet-app", eseguire i seguenti comando nel terminale:
@@ -65,3 +67,23 @@ A questo punto se apriamo un altro terminale, possiamo utilizzare i comandi prop
 ```
 
 Se l'ultimo comando dovesse falire, dobbiamo connetterci alla porta 3306 del nostro PC con un qualunque client SQL (esempio Adminer o MySql Workbench) e creare il database. Il nome del database è visibile nel file .env "DB_DATABASE=example_app", le credenziali di accesso col client sono invece DB_USERNAME=root B_PASSWORD= (generalmente quest'ultima è vuota).
+
+
+## Installazione di più ambienti con Sail Laravel
+
+Se si è già precedentemente effettuato lo start di una applicazione Laravel con la metodologia sopra descritta, effettuare lo start di un secondo ambiente potrebbe creare qualche problema, in particolare si vedrà che il container MYSQL viene terminato subito dopo il lancio per un errore di plugin. in questo caso dovremo andare nella cartella del nuovo progetto e modificare il file docker-compose.yml nelle due righe in cui ricorre il valore il volume sailmysql, assegnandogli un nome diverso.
+```
+volumes:
+  - 'example-sailmysql:/var/lib/mysql'
+ .
+ .
+ .
+ networks:
+    sail:
+        driver: bridge
+volumes:
+    timesheet-sailmysql:
+        driver: local
+    sailredis:
+        driver: local
+```
