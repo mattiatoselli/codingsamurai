@@ -2,7 +2,7 @@
 layout: post
 title:  "Distribuire una applicazione Laravel su Amazon Elastic Beanstalk"
 author: mattia
-categories: [ Jekyll, tutorial ]
+categories: [ Laravel, Api, Rest, Php, Docker]
 image: assets/images/16.jpg
 ---
 
@@ -16,7 +16,7 @@ Non vi è alcun costo aggiuntivo per Elastic Beanstalk: si paga solo per le riso
 
 Il vantaggio è presto detto: una volta configurato correttamente un ambiente con Amazon Elastic Beanstalk, ci si dimentica completamente dell'infrastruttura e ci si concentra unicamente sul codice, con ricadute più che positive in termini di tempo e produttività per gli sviluppatori, ed economici e di stabilità per quanto riguarda la propria applicazione.
 
-In questo articolo effettueremo il deploy di una applicazione Laravel con database MySql su questo servizio.
+In questo articolo effettueremo il deploy di una applicazione Laravel con database MySql su questo servizio. Daremo per assodate le conoscenze del framework e di MySql.
 
 
 ## Creazione dell'ambiente
@@ -52,3 +52,4 @@ Zippiamo nuovamente e ricarichiamo il codice.
 Se proviamo ad effettuare una qualunque operazione a database, l'applicazione solleverà un'altra eccezione, questa volta con tutte le ragioni del mondo. Non abbiamo collegato alcun database! Le scelte sono sostanzialmente tre:
 
 Collegare un database tramite la configurazione guidata di Elastic Beanstalk, in questo caso avremo la facilità di configurazione dalla nostra, ma non avremo modo di utilizzare alcune features di Beanstalk come ad esempio il canary deployment o la possibilità di accedere al database esternamente (per esempio con un client Workbench). In verità possiamo comunque accedere al database grazie a Tinker bypassando il problema attraverso l'accesso SSH da una istanza EC2.
+Dovremo recarci nel tab di sicurezza della app beanstalk ed assegnare una coppia di chiavi EC2, in qualunque momento potremo ocnnetterci tramite connessione SSh ad una delle macchine che compongono l'ambiente e lanciare una sessione di tinker tramite il classico comando PHP proprio di laravel.
