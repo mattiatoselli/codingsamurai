@@ -5,6 +5,7 @@ author: mattia
 categories: [ AWS, Elastic beanstalk, Laravel, web development ]
 image: "https://images.unsplash.com/photo-1541544537156-7627a7a4aa1c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a20c472bc23308e390c8ffae3dd90c60&auto=format&fit=crop&w=750&q=80"
 ---
+
 AWS Elastic Beanstalk è un servizio di semplice utilizzo per distribuire e ridimensionare applicazioni e servizi Web sviluppati con Java, .NET, PHP, Node.js, Python, Ruby, Go e Docker su server comuni come Apache, Nginx, Passenger e IIS.
 
 Caricando semplicemente il proprio codice, Elastic Beanstalk gestisce automaticamente l'implementazione, il provisioning di capacità, auto scaling e monitoraggio della salute dell'applicazione. Al contempo, l'utente mantiene il completo controllo sulle risorse AWS su cui si basa la sua applicazione e può accedere in qualsiasi momento alle risorse implicate.
@@ -24,6 +25,7 @@ Una volta caricato il codice, selezioniamo in basso il tasto "configura ulterior
 
 Nella finestra in alto abbiamo a disposizione la tipologia di ambiente e la disponibilità che desideriamo. per ambienti di produzione sarà necessario creare degli ambienti ad alta disponibilità, ma in questo caso sceglieremo istanza singola, una volta completata questa configurazione di base lanciamo la creazione dell'ambiente, che richiederà anche qualche minuto. Se ora ci rechiamo sulla pagina di dettaglio della applicazione e clicchiamo sul suo URl, verremo accolti da un poco rassicurante errore 403 di Nginx, poco male, vediamo come risolvere.
 
+
 ## Risoluzione errore 403 all'avvio
 
 Il problema è dato dal fatto che la root della configurazione di base del server Nginx è /index.php per questo tipo di ambienti, mentre nei progetti Laravel tale file si trova in "public". 
@@ -31,6 +33,7 @@ Il problema è dato dal fatto che la root della configurazione di base del serve
 Per risolvere, rechiamoci nella pagina delle configurazioni (sidebar a sinistra nella pagina di dettaglio della applicazione) e selezioniamo "software". Da qui possiamo modificare i server web del nostro ambiente, lasciamo pure Nginx, ma modifichiamo la root in /public/ alla voce Radice documento.
 
 Se nel nostro progetto Laravel avevamo altre route, proviamo ad andarci e vedremo un altrettanto bellissimo errore 404!
+
 
 ## Risoluzione errore 404 sulle route diverse da /
 
@@ -43,6 +46,7 @@ try_files $uri $uri/ /index.php?$query_string;
 ```
 
 Zippiamo nuovamente e ricarichiamo il codice.
+
 
 ## Installazione database
 
@@ -58,6 +62,7 @@ Dovremo recarci nel tab di sicurezza della app beanstalk ed assegnare una coppia
 Dato che a noi piace fare le cose per bene, sceglieremo il secondo metodo. La documentazione fornita in questo caso è (stranamente per quella di solito fornita da AWS corretta e completa). Seguiamola fino in fondo e prepariamoci a modificare per un'ultima volta il codice e ricaricarlo al termine del processo.
 
 Da notare come in realtà nulla vieti anche di poter accedere comunque alle macchine dell'ambiente tramite SSh, se si sceglie la seconda metodologia, basta settare una chiave di accesso.
+
 
 ## Configurazione finale e prima migrazione
 
@@ -141,6 +146,7 @@ class AppServiceProvider extends ServiceProvider
 }
 ```
 
+
 ## Eseguire la prima migrazione durante il deploy
 
 Beanstalk offre la possibilità di lanciare degli script al deploy, basta creare una cartella .ebextensions e dentro di essa dei file con sintassi yml, personalmente preferisco eseguire il tutto manualmente tramite le macchine EC2 dell'ambiente, ma è utile saperlo. Creiamo un file ./ebextensions/container_commands:
@@ -150,3 +156,8 @@ container_commands:
 	01execute_migrations: "php artisan migrate"
 ```
 Si tenga conto che i comandi scritti dentro questi file verranno eseguiti ogni volta che sono presenti in una distribuzione!
+
+
+## nota sull'uso con Laravel Sail
+
+Se viene utilizzato Laravel con Sail, l'unica soluazione che ho trovato è modificare il gruppo di sicurezza per accettare traffico dal nostro IP, settare manualmente le credenziali del Db, e lanciare la migrazione dal nostro ambiente, per poi copiare nuovamente AppServiceProvider.php con le variabili di ambiente settate, in futuro se dovessi elaborare nuove metodologie più automatizzate, aggiornerò l'articolo.
