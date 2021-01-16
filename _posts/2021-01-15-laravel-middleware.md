@@ -4,7 +4,7 @@ title:  "Creare un middleware custom su Laravel"
 author: mattia
 categories: [ Laravel, Api, middleware, php]
 image: assets/images/undraw_security_o890.png
-rating: 2,5
+rating: 2.5
 ---
 
 
