@@ -209,3 +209,70 @@ Verrà restituito questo payload:
 ```
 
 
+## Proteggere una route in Passport
+
+Supponiamo di voler creare una api che ci permetta di avere le informazioni sullo user loggato in questo momento. Ovviamente una tale API deve essere protetta tramite il sistema di autenticazione. Passport mette già a disposizione un middleware che si collega al sistema di login appena presentato. Ogni richiesta protetta dal middleware dovrà contenere nel suo header il token fornito come risposta, tale token è univoco e identifica univocamente un unico user collegato.
+
+Per prima cosa, nel LoginController aggiungiamo il metodo che restituisce le info sullo user collegato, abbiamo detto che esso viene identificato unicamente dall'header della richiesta, quindi non sono necessari parametri, si tratta quindi una richiesta per cui il metodo GET sarà l'unico autorizzato.
+
+```
+public function getCurrentUser() {
+        return response()->json(['user' => Auth::user()]);
+}
+```
+
+modifichiamo il file api.php e inseriamo la nuova route, avendo cura prima di aggiungere il middleware auth:api di Passport. Tale middleware viene fornito out of the box, ed è in grado di verificare se il token fornito nell'header è valido, ed identificare lo user ad esso associato.
+
+```
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\api\v1\LoginController;
+
+
+Route::prefix("/user")->group(function (){
+      
+    //authenticate user  
+    Route::post('/login', [LoginController::class, 'login'])
+        ->name('api.login');
+
+    //get user credentials
+    Route::middleware('auth:api')
+        ->get('/current', [LoginController::class, 'getCurrentUser'])
+        ->name('api.currentUser');
+});
+
+```
+
+A questo punto possiamo testare la nostra api:
+
+```
+METODO: GET
+ENDPOINT: http://localhost/api/v1/user/current
+headers: [
+Content-Type: application/json
+accept: application/json
+Authorization: Bearer <token>
+]
+```
+
+Nel caso fornissimo un token non valido, o nel caso non lo fornissimo proprio, l'API risponderebbe con il classico status 401, ed un laconico: "Unauthorized".
+Inversamente, se il token fornito è valido, la risposta sarà il nostro user:
+
+```
+{
+    "user": {
+        "id": 1,
+        "name": "Mattia",
+        "lastName": "Toselli",
+        "email": "myname@mymail.com",
+        "email_verified_at": null,
+        "lastLogin": "2021-01-06 20:19:14",
+        "active": 1,
+        "created_at": "2021-01-06T20:19:14.000000Z",
+        "updated_at": "2021-01-06T20:19:14.000000Z"
+    }
+}
+```
