@@ -3,7 +3,7 @@ layout: post
 title:  "Come sfruttare le API di Google Translate per effettuare traduzioni con Python"
 author: mattia
 categories: [ Python, Google, API, Machine Learning]
-image: assets/images/s3_logo.png
+image: assets/images/python-logo.jpg
 rating: 1
 ---
 
