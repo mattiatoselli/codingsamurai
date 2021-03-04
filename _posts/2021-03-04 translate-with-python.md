@@ -1,0 +1,259 @@
+---
+layout: post
+title:  "Come sfruttare le API di Google Translate per effettuare traduzioni con Python"
+author: mattia
+categories: [ Python, Google, API, Machine Learning]
+image: assets/images/s3_logo.png
+rating: 1
+---
+
+Python offre una serie di possibilità veramente infinite, per un progetto di machine learning ultimamente mi son trovato a chiedermi se per caso fosse possibile effettuare traduzioni con questo linguaggio. ben sapendo che Python ha praticamente un modulo per qualunque cosa, mi son messo alla ricerca, ecco cosa ne ho ricavato.
+
+
+## Download del modulo
+
+In un qualunque ambiente Laravel, creiamo una view con un form che permetta di caricare una immagine, in questo caso sto utilizzando materalize ccs come framework per la grafica.
+
+```
+<form class = "col s12" method="POST" action="{{ route('image.store') }}" enctype="multipart/form-data">
+ @csrf
+   <div class = "row">
+       <label>Materialize File Input</label>
+           <div class = "file-field input-field">
+                  <div class = "btn">
+                     <span>Browse</span>
+                     <input type = "file" name="image" id="image"/>
+                  </div>
+                  <div class = "file-path-wrapper">
+                     <input class = "file-path validate" type = "text"
+                        placeholder = "Upload file" />
+                  </div>
+           </div>
+     <input type="submit" value="Submit">
+    </div>
+ </form>
+ ```
+ 
+ Creiamo un Controller e nominiamolo ImageController:
+ 
+ ```
+ <?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ImageController extends Controller
+{
+    public function store(Request $request)
+    {
+        $path = $request->file("image")->store("images");
+        return $path;
+    }
+}
+```
+
+Se tutto funziona correttamente, laravel dovrebbe restituirci il path relativo della immagine che abbiamo caricato. Possiamo verificare che la foto ora si trova nella cartella storage/images. Siamo riusciti a caricare una foto in locale, ma il nostro obiettivo era farlo su Amazon S3, vediamo ora come fare.
+
+
+## Configurazione del bucket S3
+
+Creiamo su AWS un bucket S3. Per farlo sarà sufficiente utilizzare la console del servizio e cliccare sul tasto "crea bucket", assegnamo un nome e lasciamo le impostazioni di default. Successivamente creiamo uno user IAM con diritti di accesso al bucket per poter sfruttare le API di AWS dall'interno del nostro ambiente Laravel. Creiamo un nuovo utente con accesso programmatico, e assegnamogli tutti i diritti su S3 "AmazonS3FullAccess" dalle policy disponibili. Copiamo la chiave di accesso e l'id del nostro User, successivamente modifichiamo il file .env:
+
+```
+AWS_ACCESS_KEY_ID=chiave_accesso_IAM
+AWS_SECRET_ACCESS_KEY=secret_key_IAM
+AWS_DEFAULT_REGION=regione_bucket_s3 (accessibile dalla schermata proprietà del bucket).
+AWS_BUCKET=nome_bucket
+```
+
+Successivamente come ultimo passo, modifichiamo lo storage nel nostro metodo:
+
+```
+ <?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ImageController extends Controller
+{
+    public function store(Request $request)
+    {
+        $path = $request->file("image")->store("images", "s3");
+        return $path;
+    }
+}
+```
+
+e installiamo un pacchetto necessario:
+
+```
+./sail composer require league/flysystem-aws-s3-v3 ~1.0
+```
+
+potremo osservare che le immagini ora vengono caricate su S3, il nostro controller restituisce il path dell'immagine. Esploriamo ancora alcune possibilità, ora.
+Anzitutto, supponiamo di voler utilizzare le immagini caricate come immagini profilo del nostro user. Vogliamo salvare la nostra immagine a database. Creiamo un nuovo campo sullo User.
+
+```
+./sail artisan make:migration add_profile_pic_url_field_to_users_table --table=users
+```
+
+```
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddProfilePicUrlFieldToUsersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('profilePicUrl')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('profilePicUrl');
+        });
+    }
+}
+```
+
+Una volta eseguita la migrazione avremo il campo, ora modifichiamo il controller per il caricamento delle immagini.
+
+```
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ImageController extends Controller
+{
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Request $request)
+    {
+        //salva immagine e genera un path
+        $path = $request->file("image")->store("images", "s3");
+        $url = Storage::disk("s3")->url($path);
+        //imposta visibilità pubblica sulla risorsa
+        Storage::disk("s3")->setVisibility($path, "public");
+        $user = Auth::user();
+        $user->profilePicUrl = $url;
+        $user->save();
+        return view('dashboard');
+    }
+}
+```
+ Creiamo una card nella nostra pagina che ci permetta di visualizzare l'anagrafica del nostro utente:
+ 
+ ```
+ <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="{{ Auth::user()->profilePicUrl }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+               {{ Auth::user()->name }}
+               {{ Auth::user()->lastName }}
+               <br>
+               {{ Auth::user()->email }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+ ```
+ 
+Ora, rechiamoci sul nostro bucket S3, e nella voce "Permessi" Rimuoviamo la spunta dal blocco a tutti gli accessi pubblici. Se proviamo a caricare una immagine,una volta eseguito il caricamento, verremo reindirizzati ala stessa vista, ma vedremo la nostra immagine profilo.
+ 
+ 
+## Cancellare immagini e modificare l'accesso alle risorse
+ 
+Supponiamo ora di voler permettere ai nostri utenti di caricare anche delle immagini, che però dovranno essere accessibili solo all'interno della piattaforma,e senza alcun accesso dall'esterno, vogliamo avere il totale controllo su chi può accedere alle risorse, insomma.
+Per farlo, modifichiamo il metodo di caricamento in modo da non creare più risorse pubbliche, e creiamo un metodo "show()" che mostra l'immagine del profilo dell'utente, che altrimenti renderemo inaccessibile.
+
+```
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ImageController extends Controller
+{
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Request $request)
+    {
+        $path = $request->file("image")->store("images", "s3");
+        $user = Auth::user();
+        $user->profilePicUrl = $path;
+        $user->save();
+        return view('dashboard');
+    }
+
+    public function show() 
+    {
+        $user = Auth::user();
+        $path = $user->profilePicUrl;
+        return Storage::disk("s3")->response("images/".basename($path));
+    }
+}
+```
+
+Creiamo una route per il metodo show.
+
+```
+Route::get('/image/profile/show', [ImageController::class, 'show'])->name('image.show');
+```
+
+A questo punto inseriamo la route nella vista dashboard, cliccando sul link dopo aver caricato una nuova immagine, saremo in grado di vedere l'immagine, ma se proviamo ad accedervi da S3, o in incognito, verremo bloccati.
+
+```
+<a href="{{ route('image.show') }}">link immagine</a>
+```
+
+In ultima istanza, vogliamo che ogni volta che l'utente esegue un aggiornamento, della sua immagine, la precedente venga cancellata dallo storage.
+
+```
+    public function store(Request $request)
+    {
+        $user = Auth::user();
+        if($user->profilePicUrl != null){
+            Storage::disk("s3")->delete(($user->profilePicUrl));
+            $user->profilePicUrl = null;
+            $user->save();
+        }
+        $path = $request->file("image")->store("images", "s3");
+        $user->profilePicUrl = $path;
+        $user->save();
+        return redirect()->route('user.home');
+    }
+ ```
