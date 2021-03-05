@@ -12,7 +12,7 @@ Python offre una serie di possibilità veramente infinite. Per un progetto di ma
 
 ## Download del modulo
 
-Purtroppo i moduli ufficiali sulla documentazione di Python non sono più supportati, ciò è dovuto al fatto che le API di google sono cambiate. Questa azienda effettivamente ha il brutto vizio di cambiare costantemente le sue API di accesso ai servizi senza dare sufficiente preavviso della cosa. Per fortuna, ho trovato un modulo sviluppato da dei ragazzi volenterosi su <a href="https://github.com/lushan88a/google_trans_new" Github</a>.
+Purtroppo i moduli ufficiali sulla documentazione di Python non sono più supportati, ciò è dovuto al fatto che le API di google sono cambiate. Questa azienda effettivamente ha il brutto vizio di cambiare costantemente le sue API di accesso ai servizi senza dare sufficiente preavviso della cosa. Per fortuna, ho trovato un modulo sviluppato da dei ragazzi volenterosi su <a href="https://github.com/lushan88a/google_trans_new"> Github</a>.
 
 Prima di tutto, installiamo traite pip il modulo.
 
