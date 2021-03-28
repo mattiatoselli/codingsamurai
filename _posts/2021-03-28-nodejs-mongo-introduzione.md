@@ -30,3 +30,7 @@ MongoDB è un database orientato ai documenti. Ciò significa che non utilizza t
 ## Spiegazione del progetto
 
 In questo piccolo progetto andremo a creare una applicazione che servirà a gestire un'asta piloti e macchine di fine campionato per un gruppo di sim drivers in cui partecipo, lascio di seguito i riferimenti al <a href="https://www.twitch.tv/racingteamitalia">canale twitch</a> e al <a href="https://www.racingteamitalia.it">sito internet</a>.
+
+I campionati di questi ragazzi vengono corsi divisi in 7 squadre da 8 componenti, più un campionato Rookies, ovvero nuove leve che sono al loro primo ingresso nel team, e che per regolamento devono prima passare da questo campionato. Ogni fine campionato da 15/16 gare, alcuni piloti finiscono sul mercato ed in una live su twitch, i capi dei 7 team effettuano un'asta per cercare di aggiudicarsi i piloti e le macchine, utilizzando come valuta i punti guadagnati da tutti i loro piloti durante il campionato.
+
+Senza addentrarsi troppo nel funzionamento e nel regolamento di tali aste, basti sapere che alcuni piloti partono da una base d'asta di 75 crediti, altri 100, ed altri 50, mentre altri non vengono proprio messi in vendita, in base al loro piazzamento in classifica finale l'anno prima, stesso vale per le macchine che i vari team si devono aggiudicare.
