@@ -29,4 +29,4 @@ MongoDB è un database orientato ai documenti. Ciò significa che non utilizza t
 
 ## Spiegazione del progetto
 
-In questo piccolo progetto andremo a creare una applicazione che servirà a gestire un'asta piloti e macchine di fine campionato per un gruppo di sim drivers in cui partecipo, lascio di seguito i riferimenti al <a href="https://www.twitch.tv/racingteamitalia">canale twitch</a> e al <a href="https://www.racingteam.it">sito internet</a>.
+In questo piccolo progetto andremo a creare una applicazione che servirà a gestire un'asta piloti e macchine di fine campionato per un gruppo di sim drivers in cui partecipo, lascio di seguito i riferimenti al <a href="https://www.twitch.tv/racingteamitalia">canale twitch</a> e al <a href="https://www.racingteamitalia.it">sito internet</a>.
