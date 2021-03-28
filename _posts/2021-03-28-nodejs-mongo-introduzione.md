@@ -14,12 +14,9 @@ un ambiente di runtime creato da Google, ed utilizzato ad esempio da Chrome.
 La caratteristica principale di Node.js risiede nella possibilità che offre di accedere alle risorse del sistema operativo in modalità event-driven e non 
 sfruttando il classico modello basato su processi o thread concorrenti, utilizzato dai classici web server.
 
-Il modello event-driven, o "programmazione ad eventi", si basa su un concetto piuttosto semplice: si lancia una azione quando accade qualcosa. Nodejs, ovviamente, non è la panacea di tutti i mali,
-ha delle applicazioni in cui è lo strumento migliore, e altre in cui non è indicato il suo utilizzo.
-Un esempio di applicazioni in cui è indicato l'utilizzo di questa tecnologia è:
 
-● Tante richieste e risposte di piccola dimensione
-● Applicazioni real-time
-● Giochi on-line, chat, sistemi di messaggistica
-● sistemi di notifica
+##Event Driven
 
+Il modello event-driven, o "programmazione ad eventi", si basa su un concetto piuttosto semplice: si lancia una azione quando accade qualcosa. Nodejs, ovviamente, non è la panacea di tutti i mali, ha delle applicazioni in cui è lo strumento migliore, e altre in cui non è indicato il suo utilizzo.
+Applicazioni in cui è indicato l'utilizzo di questa tecnologia sono casi d'uso in cui si hanno tante richieste e risposte di piccola dimensione, per esempio sistemi di notifica o chat, applicazioni in real time, giochi online.
+Quando conviene invece evitarlo? Risposte HTTP di grandi dimensioni, gestionali, server per gestione di file statici (es. immagini), Blogs, CMS, E-Commerce.
