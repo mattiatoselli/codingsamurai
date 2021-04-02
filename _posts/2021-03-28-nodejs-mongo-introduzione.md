@@ -33,4 +33,32 @@ In questo piccolo progetto andremo a creare una applicazione che servirà a gest
 
 I campionati di questi ragazzi vengono corsi divisi in 7 squadre da 8 componenti, più un campionato Rookies, ovvero nuove leve che sono al loro primo ingresso nel team, e che per regolamento devono prima passare da questo campionato. Ogni fine campionato da 15/16 gare, alcuni piloti finiscono sul mercato ed in una live su twitch, i capi dei 7 team effettuano un'asta per cercare di aggiudicarsi i piloti e le macchine, utilizzando come valuta i punti guadagnati da tutti i loro piloti durante il campionato.
 
-Senza addentrarsi troppo nel funzionamento e nel regolamento di tali aste, basti sapere che alcuni piloti partono da una base d'asta di 75 crediti, altri 100, ed altri 50, mentre altri non vengono proprio messi in vendita, in base al loro piazzamento in classifica finale l'anno prima, stesso vale per le macchine che i vari team si devono aggiudicare.
+Senza addentrarsi troppo nel funzionamento e nel regolamento di tali aste, basti sapere che alcuni piloti partono da una base d'asta di 75 crediti, altri 100, ed altri 50, mentre altri non vengono proprio messi in vendita, in base al loro piazzamento in classifica finale l'anno prima, stesso vale per le macchine che i vari team si devono aggiudicare. Se un pilota cambia team, metà del costo della transazione viene accordato al team che vende, altrimenti tutti i crediti vengono bruciati.
+
+
+## Installazione di NodeJs
+
+Se siamo su Windows, una rapida ricerca su Google ci permetterà di scaricare il file eseguibile. Se siamo invece su Mac o Linux, possiamo farlo via terminale. Qui seguiremo la procedura su Ubuntu.
+
+```
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt install nodejs
+```
+
+Se abbiamo bisogno di installare versioni differenti, basterà modificare il 13 nel primo comando. Creiamo la cartella e installiamo i pacchetti necessari tramite npm. NPM è il gestore di pacchetti di NodeJs, uno dei suoi punti di forza è il fatto che sia il gestore di pacchetti più ampio esistente al mondo. Creiamo una cartella nel nostro filesystem, personalmente preferisco sempre una struttura di questo tipo:
+
+```
+cd ~
+mkdir asta
+cd asta
+touch server
+npm i express cors body-parser mongodb
+```
+con l'ultimo comando abbiamo installato una serie di pacchetti npm che ci serviranno rispettivamente per importare il framework web, abilitare le richieste verso il nostro server da tutti i client, per effettuare i parse dei json, e il driver per collegarsi al database MongoDb.
+Qui di seguito lascio alcuni link a documentazioni di riferimento utili:
+<ul>
+  <li><a href="http://expressjs.com/it/">Express</a></li>
+  <li><a href="https://mongodb.github.io/node-mongodb-native/">Mongo Nodejs Driver</a></li>
+  <li><a href="https://mongodb.github.io/node-mongodb-native/">Mongo Nodejs Driver</a></li>
+  <li><a href="https://www.mongodb.com/">MongoDb</a></li>
+</ul>
