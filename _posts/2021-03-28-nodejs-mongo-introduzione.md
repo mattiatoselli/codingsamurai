@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creazione di una app NodeJs, MongoDb su DigitalOcean App Platform"
+title:  "Creazione di una app NodeJs, MongoDb su DigitalOcean App Platform: Introduzione"
 author: mattia
 categories: [ Javascript, Nodejs, API]
 image: assets/images/node.jpg
