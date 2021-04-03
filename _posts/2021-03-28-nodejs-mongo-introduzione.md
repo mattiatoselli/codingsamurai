@@ -62,3 +62,91 @@ Qui di seguito lascio alcuni link a documentazioni di riferimento utili:
   <li><a href="https://mongodb.github.io/node-mongodb-native/">Mongo Nodejs Driver</a></li>
   <li><a href="https://www.mongodb.com/">MongoDb</a></li>
 </ul>
+Installiamo anche Nodemon, in modo da non dover riavviare manualmente il server di sviluppo ogni volta che modifichiamo un file.
+
+```
+npm i -D nodemon
+```
+
+Lanciamo il comando di inizializzazione e modifichiamo gli script del file package.json, tutte le domande del wizard a terminale di configurazione iniziale possono ttranquillamente essere saltate premendo enter.
+
+```
+npm init
+```
+
+Il file cong.json avrà una struttura simile, assicuriamoci di modificare gli script come segue:
+
+```
+{
+  "name": "asta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+creiamo il file index.js:
+
+```
+cd ~/asta/server
+touch index.js
+```
+
+ora nel nostro nuovo file, creiamo un server di prova:
+
+```
+//initialize expressjs and import modules we need for the functions
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+//instantiate express framework
+const app = express();
+
+//some middlewares we need to validate and read requests to the server
+app.use(bodyParser.json());
+app.use(cors());
+
+// open server on port 3000 if you can't read an ENV variable named PORT
+//this is because some cloud providers prefer another 3000
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+});
+```
+
+Per il momento non preoccupiamoci troppo del codice. Quello che ci interessa è che se lanciamo i seguenti comandi, dovremmo vedere da terminale che viene creato il server di sviluppo:
+
+```
+cd ~/asta
+npm run dev
+```
+
+il terminale dovrebbe risponderci con un output simile a schermo:
+
+```
+> asta@1.0.0 dev /home/mattia/asta
+> nodemon server/index.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server/index.js`
+Example app listening at http://localhost:3000
+```
