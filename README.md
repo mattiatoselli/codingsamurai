@@ -1,3 +1,3 @@
 # Mediumish - Jekyll Theme
 
-test con jekyll, documento le mie porcate in Laravel.
+documento i miei test e app con Laravel e Nodejs
