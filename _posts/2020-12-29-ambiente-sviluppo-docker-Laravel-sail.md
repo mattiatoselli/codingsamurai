@@ -48,7 +48,7 @@ $ sudo apt-get install docker-compose
 Per creare una nuova applicazione Laravel in una directory denominata "timesheet-app", eseguire i seguenti comando nel terminale:
 
 ```
-curl -s https://laravel.build/example-app
+curl -s https://laravel.build/timesheet-app | bash
 cd example-app/vendor/bin
 ./sail up
 ```
