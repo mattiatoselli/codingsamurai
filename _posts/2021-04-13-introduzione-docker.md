@@ -3,7 +3,7 @@ layout: post
 title:  "Introduzione a Docker"
 author: mattia
 categories: [ Container, Docker, Linux ]
-image: "assets/images/docker-container.png"
+image: "assets/images/docker-container.jpg"
 rating: 2
 ---
 
