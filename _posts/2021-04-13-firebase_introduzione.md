@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Introduzione a Docker"
+title:  "Introduzione a Firebase"
 author: mattia
 categories: [ Serverless, Javascript, Firebase ]
 image: "assets/images/firebase.png"
