@@ -17,7 +17,7 @@ Firebase è una piattaforma per applicazioni web e mobile, in grado da fungere d
 	<li>Sviluppo</li>
 	<li>Monitoraggio</li>
 	<li>Engagement</li>
-<ul>
+</ul>
 
 
 # Sviluppo
