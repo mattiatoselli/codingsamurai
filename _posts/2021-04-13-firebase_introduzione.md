@@ -53,3 +53,55 @@ Firebase è una piattaforma per applicazioni web e mobile, in grado da fungere d
 		gli oggetti e permette di servirli in maiera granulare.
 	</li>
 </ul>
+
+## Monitoraggio
+
+<ul>
+	<li>
+		<b>Crashlytics:</b>
+		Un logger di crash in tempo reale che aiuta a monitorare, assegnare priorità e risolvere i problemi di stabilità.
+	</li>
+	<li>
+		<b>Performance Monitoring:</b>
+		Il monitoraggio delle prestazioni aiuta a capire dove le prestazioni della app possono essere migliorate in modo da poter 
+		utilizzare tali informazioni per risolvere i problemi di prestazioni. Supporta la piattaforma Android e iOS.
+	</li>
+	<li>
+		<b>Cloud Functions:</b>
+		Permette di scrivere funzioni eseguite su server senza doversi occupare della infrastruttura e della gestione degli ambienti, 
+		e senza intaccare la scalabilità. Offre diverse SDK per Unity, C++, Javascript, Android e IOS.
+	</li>
+	<li>
+		<b>Test Labs:</b>
+		Un'infrastruttura di test delle app basata su cloud. Fornisce un gran numero di 
+		dispositivi mobili di test testare le tue app. Supporta la piattaforma Android e iOS.
+	</li>
+</ul>
+
+## Engagement
+
+<ul>
+	<li>
+		<b>In-App Messaging:</b>
+		Servizio di notifiche in app per IOS ed Android.
+	</li>
+	<li>
+		<b>Google Analytics:</b>
+		Analytics si integra con le funzionalità di Firebase e fornisce rapporti illimitati 
+		per un massimo di 500 eventi distinti che si possono definire utilizzando l'SDK di Firebase. 
+		I rapporti di Analytics aiutano a capire chiaramente come si comportano gli utenti, 
+		il che consente di prendere decisioni in merito al marketing all'ottimizzazione delle prestazioni. 
+		Supporta Android, iOS, C ++ e Unity.
+	</li>
+	<li>
+		<b>Predictions:</b>
+		Servizio di Machine Learning che permette di effettuare previsioni basate sugli utenti.
+	</li>
+	<li>
+		<b>Test Labs:</b>
+		Un'infrastruttura di test delle app basata su cloud. Fornisce un gran numero di 
+		dispositivi mobili di test testare le tue app. Supporta la piattaforma Android e iOS.
+	</li>
+</ul>
+
+altri servizi minori sono A/B Testing, Cloud Messaging, Remote Config, Dynamic Links, App Indexing.
