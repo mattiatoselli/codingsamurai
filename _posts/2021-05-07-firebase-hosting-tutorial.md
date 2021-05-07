@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Introduzione a Firebase"
+title:  "Tour in Firebase Hosting"
 author: mattia
 categories: [ Serverless, Javascript, Firebase, Hosting ]
 image: "assets/images/firebasehost.jpg"
