@@ -35,6 +35,7 @@ Avviamo il server di sviluppo e una volta recati sul nostro indirizzo locale avr
 ```
 php -S localhost:8000
 ```
+![image](https://user-images.githubusercontent.com/44556380/130334900-c777281f-69e5-4fe3-b4e1-c411ab5e2aca.png)
 
 
 ### Classi e oggetti
