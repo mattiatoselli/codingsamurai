@@ -3,7 +3,7 @@ layout: post
 title:  "OOP in PHP: Classi ed oggetti"
 author: mattia
 categories: [ PHP, OOP]
-image: "assets/images/firebasehost.jpg"
+image: "assets/images/php.png"
 rating: 4
 ---
 
@@ -36,3 +36,4 @@ Avviamo il server di sviluppo e una volta recati sul nostro indirizzo locale avr
 php -S localhost:8000
 ```
 
+<img href="assets/images/php.png">
