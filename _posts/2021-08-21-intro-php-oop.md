@@ -36,4 +36,4 @@ Avviamo il server di sviluppo e una volta recati sul nostro indirizzo locale avr
 php -S localhost:8000
 ```
 
-<img href="assets/images/php.png">
+![il nostro file index.php](/assets/images/php.png)
