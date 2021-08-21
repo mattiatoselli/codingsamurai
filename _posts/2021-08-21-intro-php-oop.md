@@ -78,3 +78,93 @@ class Car
     private $engine;
 }
 ```
+
+si noti che gli attributi della classe sono preceduti dalla parola chiave "private", ciò significa che tali variabili non sono accessibili da altri file. Come possiamo quindi leggerne o settarne i valori? Tramite i metodi.
+
+
+## I metodi getter e setter
+
+I metodi sono funzioni interni alle classi, una volta istanziato un oggetto, potremo utilizzarli. In particolare i metodi getter e setter servono per settare il valore di un attributo o per leggerlo.
+
+```
+    public function setModel($model)
+    {
+        $this->model = $model;
+    }
+
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
+    }
+
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    public function setKm($km)
+    {
+        $this->km = $km;
+    }
+
+    public function getKm()
+    {
+        return $this->km;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+    public function setPlate($plate)
+    {
+        $this->plate = $plate;
+    }
+
+    public function getPlate()
+    {
+        return $this->plate;
+    }
+
+    public function setPower($power)
+    {
+        $this->power = $power;
+    }
+
+    public function getPower()
+    {
+        return $this->power;
+    }
+
+    public function setFuel($fuel)
+    {
+        $this->fuel = $fuel;
+    }
+
+    public function getFuel()
+    {
+        return $this->fuel;
+    }
+
+    public function setEngine($engine)
+    {
+        $this->engine = $engine;
+    }
+
+    public function getEngine()
+    {
+        return $this->engine;
+    }
+```
+
+si noti che le funzioni (o meglio, metodi) sono pubbliche e quindi accessibili dall'esterno. L'uso della parola chiave $thisè dovuto al fatto che essa permette di accedere alla istanza stessa dell'oggetto.
