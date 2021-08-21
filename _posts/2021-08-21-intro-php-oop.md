@@ -36,7 +36,6 @@ Avviamo il server di sviluppo e una volta recati sul nostro indirizzo locale avr
 php -S localhost:8000
 ```
 
-![il nostro file index.php](https://github.com/mattiatoselli/codingsamurai/blob/gh-pages/assets/images/tbc23tb19.png)
 
 ### Classi e oggetti
 
