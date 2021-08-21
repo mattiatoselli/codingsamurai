@@ -21,7 +21,7 @@ Io stesso son caduto in quella trappola, motivo per cui insieme ai miei colleggh
 
 ## Bando alle ciance
 
-Partiamo immmediatamente senza perderci troppo in chiacchiere. Per prima cosa creiamo una cartella per il nostro progetto, può essere qualunque cosa, se volete seguirmi durante la serie, io creerò una piccola applicazione che permette di far combattere fra loro dei Daimyo nella loro battaglia per il Giappone, ma può essere ovviamente qualunque cosa.
+Partiamo immmediatamente senza perderci troppo in chiacchiere. Per prima cosa creiamo una cartella per il nostro progetto, può essere qualunque cosa, se volete seguirmi durante la serie, io creerò una piccola applicazione per gestire le vendite di una autoconcessionaria, ma può essere ovviamente qualunque cosa.
 
 ```
 cd ~
@@ -36,4 +36,45 @@ Avviamo il server di sviluppo e una volta recati sul nostro indirizzo locale avr
 php -S localhost:8000
 ```
 
-![il nostro file index.php](/assets/images/php.png)
+![il nostro file index.php](/assets/images/tbc23tb19.png)
+
+## Classi e oggetti
+
+Per visualizzare la differenza tra classi ed oggetti pensiamo ad esempio ad una macchina. Una classe è un insieme di dati che compongono tutte le macchine della nostra lista. Una classe quindi è un "progetto" e rappresenta una entità all'interno della nostra applicazione. Un oggetto, d'altra parte, viene anche detto "istanza della classe" e rappresenta una specifica macchina.
+Le classi vengono anche chiamate "Modelli", e vengono create tramite la parola "Class" all'interno di un file php. Generalmente è buona norma inserire le classi all'interno di una carteella unica, e nominare il file col nome della classe stessa (tutti gli standard prevedono di farlo, e non vi è alcuna motivazione per evitare).
+
+All'interno del nostro progetto andremo a definire 3 classi:
+- Utenti dentro /models/Customer.php
+- Macchine dentro /models/Car.php
+- Pagamenti dentro /models/Payment.php
+
+Si noti che la convenzione è quella di utilizzare il singolare per il nome della classe.
+
+## Creiamo le classi
+
+La progettazione di una classe richiede sempre una certa attenzione, deve essere definita con cura ed è sicuramente un processo che migliora con l'esperienza. Una classe contiene al suo interno degli attributi, essi sono le proprietà che definiscono la singola entità per esempio nel caso della nostra macchina, la cilindrata, il costo, l'alimentazione, i cavalli e così via. Una buona norma è quella di andare sempre a definire un attributo per ogni colonna del database riguardante la tabella.
+
+Iniziamo creando la nostra classe Car:
+
+```
+<?php
+
+class Car
+{
+    private $model;
+
+    private $brand;
+    
+    private $km;
+    
+    private $price;
+    
+    private $plate;
+    
+    private $power;
+    
+    private $fuel;
+    
+    private $engine;
+}
+```
