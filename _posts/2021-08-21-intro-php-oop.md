@@ -167,4 +167,233 @@ I metodi sono funzioni interni alle classi, una volta istanziato un oggetto, pot
     }
 ```
 
-si noti che le funzioni (o meglio, metodi) sono pubbliche e quindi accessibili dall'esterno. L'uso della parola chiave $thisè dovuto al fatto che essa permette di accedere alla istanza stessa dell'oggetto.
+si noti che le funzioni (o meglio, metodi) sono pubbliche e quindi accessibili dall'esterno. L'uso della parola chiave $this è dovuto al fatto che essa permette di accedere alla istanza stessa dell'oggetto.
+Per ora limitiamo a crere le altre classi, inoltre, aggiungiamo anche una piccola chicca che ci permette di rendere ancora più robusto il codice: il type hinting. All'interno di una funzione possiamo specificare il tipo di dato che dovrà essere passato, o quello che deve essere restituito.
+La classe Car e la classe Customer saranno quindi fatte così:
+
+```
+/models/Car.php
+
+<?php
+
+class Car
+{
+    private $model;
+
+    private $brand;
+    
+    private $km;
+    
+    private $price;
+    
+    private $plate;
+    
+    private $power;
+    
+    private $fuel;
+    
+    private $engine;
+
+    /**
+     * the model of the car
+     */
+    public function setModel(string $model)
+    {
+        $this->model = $model;
+    }
+
+    public function getModel() :string 
+    {
+        return $this->model;
+    }
+
+    /**
+     * the brand of the car
+     */
+    public function setBrand(string $brand)
+    {
+        $this->brand = $brand;
+    }
+
+    public function getBrand() : string 
+    {
+        return $this->brand;
+    }
+
+    /**
+     * number of km, if car is new is set to 0
+     */
+
+    public function setKm(float $km)
+    {
+        $this->km = $km;
+    }
+
+    public function getKm() : float
+    {
+        return $this->km;
+    }
+
+    /**
+     * the price of the car in Euro
+     */
+
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+
+    public function getPrice() : float
+    {
+        return $this->price;
+    }
+
+    /**
+     * the plate of the car
+     */
+
+    public function setPlate(string $plate)
+    {
+        $this->plate = $plate;
+    }
+
+    public function getPlate() : string
+    {
+        return $this->plate;
+    }
+
+    /**
+     * Engine power in CV
+     */
+
+    public function setPower(int $power)
+    {
+        $this->power = $power;
+    }
+
+    public function getPower() : int
+    {
+        return $this->power;
+    }
+
+    /**
+     * Fuel used by the engine
+     */
+
+    public function setFuel(string $fuel)
+    {
+        $this->fuel = $fuel;
+    }
+
+    public function getFuel() : string
+    {
+        return $this->fuel;
+    }
+
+    /**
+     * type of engine, like for example V6 Turbo, V4, Hybrid V6, etc. etc.
+     */
+
+    public function setEngine(string $engine)
+    {
+        $this->engine = $engine;
+    }
+
+    public function getEngine() : string 
+    {
+        return $this->engine;
+    }
+}
+```
+
+```
+/models/Customer.php
+
+<?php
+
+class Customer
+{
+    private $name;
+
+    private $surname;
+
+    private $email;
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName() : string
+    {
+        return $this->name;
+    }
+
+    public function setSurname(string $surname)
+    {
+        $this->surname = $surname;
+    }
+
+    public function getSurname() : string 
+    {
+        return $this->surname;
+    }
+
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
+}
+```
+
+Osserviamo ora l'ultima classe: i pagamenti. Nella classe Payments vorremo tenere conto delle informazioni sulla macchina acquistata dai nostri clienti e dei clienti stessi. La cosa interessante è che una classe può contenere come attributo un oggetto di un'altra classe, questo permette di innestare oggetti diversi per poter accedere velocemente ai loro dati, mantenendo la consistenza dei dati.
+
+```
+/models/Payment.php
+
+<?php
+
+class Payment
+{
+    private $amount;
+
+    private $customer;
+
+    private $car;
+
+    public function setAmount(float $amount)
+    {
+        $this->amount = $amount;
+    }
+
+    public function getAmount() : float
+    {
+        return $this->amount;
+    }
+
+    public function setCustomer(Customer $customer)
+    {
+        $this->customer = $customer;
+    }
+
+    public function getCustomer() : Customer
+    {
+        return $this->customer;
+    }
+
+    public function setCar(Car $car)
+    {
+        $this->car = $car;
+    }
+
+    public function getCar() : Car
+    {
+        return $this->car;
+    }
+}
+```
