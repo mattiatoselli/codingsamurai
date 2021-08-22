@@ -82,7 +82,7 @@ class Car
 si noti che gli attributi della classe sono preceduti dalla parola chiave "private", ciò significa che tali variabili non sono accessibili da altri file. Come possiamo quindi leggerne o settarne i valori? Tramite i metodi.
 
 
-## I metodi getter e setter
+### I metodi getter e setter
 
 I metodi sono funzioni interni alle classi, una volta istanziato un oggetto, potremo utilizzarli. In particolare i metodi getter e setter servono per settare il valore di un attributo o per leggerlo.
 
