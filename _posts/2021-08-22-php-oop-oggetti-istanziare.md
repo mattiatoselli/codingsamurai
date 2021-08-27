@@ -24,7 +24,9 @@ Iniziamo quindi creando un unico loader delle classi e delle nostre funzioni.
 
 <?php
 
-require ".models/Car.php";
-require ".models/Customer.php";
-require ".models/Payment.php";
+<?php
+
+require "./models/Car.php";
+require "./models/Customer.php";
+require "./models/Payment.php";
 ```
