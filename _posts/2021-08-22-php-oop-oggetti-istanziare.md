@@ -20,4 +20,11 @@ Questo verrà risolto fra poco, comunque.
 Iniziamo quindi creando un unico loader delle classi e delle nostre funzioni.
 
 ```
+/Loader.php
+
+<?php
+
+require ".models/Car.php";
+require ".models/Customer.php";
+require ".models/Payment.php";
 ```
