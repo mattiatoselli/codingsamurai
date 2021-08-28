@@ -30,3 +30,73 @@ require "./models/Car.php";
 require "./models/Customer.php";
 require "./models/Payment.php";
 ```
+
+qui abbiamo un esempio di come possiamo istanziare degli oggetti, tramite la parola chiave "new <nome classe>();". Nel nostro file index.php creiamo due macchine in vendita e mostriamone le informazioni.
+
+```
+<?php
+require "loader.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autoconcessionaria PHP</title>
+</head>
+<body>
+    <?php
+    //new cars
+      $car = new Car();
+      $car->setModel("Yaris");
+      $car->setBrand("Toyota");
+      $car->setKm(11000);
+      $car->setPower(90);
+      $car->setFuel("Benzina");
+      $car->setEngine("1000cc V3");
+      $car->setPlate("BE 123 KK");
+      $car->setPrice(3500);
+
+
+      $car01 = new Car();
+      $car01->setModel("Volkswagen");
+      $car01->setBrand("Polo");
+      $car01->setKm(0);
+      $car01->setPower(120);
+      $car01->setFuel("Benzina");
+      $car01->setEngine("1000cc V3");
+      $car01->setPlate("UG 903 RP");
+      $car01->setPrice(23000);
+
+      //new Customer
+      $customer = new Customer();
+      $customer->setName("Mario");
+      $customer->setSurname("Luigi");
+      $customer->setEmail("mario@mail.com");
+
+      //payment
+      $payment = new Payment();
+      $payment->setAmount($car->getPrice());
+      $payment->setCustomer($customer);
+      $payment->setCar($car)
+    ?>
+    <h2>Macchine in vendita:</h2>
+    <ul>
+      <?php echo "<li> {$car->getBrand()} - {$car->getModel()}: {$car->getPrice()}$ </li>" ?>
+      <?php echo "<li> {$car01->getBrand()} - {$car01->getModel()}: {$car01->getPrice()}$ </li>" ?>
+    </ul>
+
+    <hr>
+
+    <h2>Macchine vendute:</h2>
+    <ul>
+      <?php echo "<li> {$payment->getCustomer()->getName()} {$payment->getCustomer()->getSurname()}, paga {$payment->getAmount()}$ e compra 
+      {$payment->getCar()->getBrand()} {$payment->getCar()->getModel()} </li>" ?>
+    </ul>
+
+
+
+</body>
+</html>
+ ```
