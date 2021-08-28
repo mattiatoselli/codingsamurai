@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "OOP in PHP: Classi ed oggetti"
+title:  "OOP in PHP: Classi ed oggetti, parte 2"
 author: mattia
 categories: [ PHP, OOP]
 image: "assets/images/php.png"
