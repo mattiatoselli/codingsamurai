@@ -2,8 +2,8 @@
 layout: post
 title:  "Golang: tutorial base al linguaggio di Google"
 author: mattia
-categories: [ GOLANG, OOP]
-image: "assets/images/php.png"
+categories: [GOLANG]
+image: "assets/images/go-gopher.png"
 ---
 
 Il linguaggio è stato concettualizzato da Robert Griesemer, Rob Pike e Ken Thompson, tre ingegneri di Google.
